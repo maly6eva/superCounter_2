@@ -1,76 +1,65 @@
 import './App.css'
+
 import {ChangeEvent, useState} from "react";
 
 export const App = () => {
-    const [count, setCount] = useState<number>(0)
-    const [max, setMax] = useState<string>('0')
-    const [start, setStart] = useState<string>('0')
-    const [isSet, setIsSet] = useState<boolean>(false)
-    const [error, setError] = useState<string>('')
+    const [count, setCount] = useState<number>(0);
+    const [max, setMax] = useState(0);
+    const [start, setStart] = useState(0);
+    const [isSetPressed, setIsSetPressed] = useState(false)
+    // const [error, setError] = useState<string | null>('')
 
 
-    const maxRes = Number(max)
-    const startRes = Number(start)
-
-    const maxOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setMax(e.currentTarget.value)
-        if (maxRes >= 99) {
-            setError('Max value')
-        } else {
-            setError('')
-        }
+    const startCounter = (e: ChangeEvent<HTMLInputElement>) => {
+        setStart(+e.currentTarget.value)
+        setIsSetPressed(false)
     }
 
-    const startOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setStart(e.currentTarget.value)
-        if (startRes <= 1) {
-            setError('no such meaning')
-        } else {
-            setError('')
-        }
+    const setButton = () => {
+        const startValue = start;
+        setCount(prev => prev + startValue)
+        setIsSetPressed(true)
     }
 
-    const resultSet = () => {
-        if (start === '') return
-        setCount(startRes)
-        setIsSet(true)
-    }
-
-    const resultInc = () => {
+    const resInc = () => {
         setCount(prev => {
-            if (isNaN(maxRes) || isNaN(startRes)) return prev
-            if (prev >= maxRes) return prev
-            return prev + 1
+            const next = prev + 1
+            return next > max ? max : next
         })
     }
 
-    const resultReset = () => {
-        setCount(startRes)
+    const resReset = () => {
+        setCount(start)
+        setIsSetPressed(false)
     }
 
+    const disabled = start < 0 || max < 0 || start === max || isSetPressed
     return (
         <div className="app">
             <div className="settings-box">
                 <label>
                     Max value:
-                    <input type="number" className="input" value={max ?? ''} onChange={maxOnChange}/>
-                    <p className='err'> {error}</p>
+                    <input type="number" className={`input ${start < 0 ? 'err' : ''} `} value={max}
+                           onChange={e => setMax(+e.currentTarget.value)}/>
                 </label>
 
                 <label>
                     Start value:
-                    <input type="number" className="input" value={start ?? ''} onChange={startOnChange}/>
-                    <p className='err'> {error}</p>
+                    <input type="number" className={`input ${start < 0 ? 'err' : ''}`} value={start}
+                           onChange={startCounter}/>
                 </label>
 
-                <button className="btn set-btn" onClick={resultSet}>Set</button>
+                <button className={`btn set-btn ${disabled ? 'disabledStyleSet' : ''}`} onClick={setButton}
+                        disabled={disabled}>Set
+                </button>
             </div>
 
             <div className="counter-box">
-                <h2 className={`count-value ${isSet && count === maxRes ? "count-red" : ""}`}>{count}</h2>
+                <h2 className={`count-value ${count === max ? 'count-red' : ''}`}>  {count ? count : "Enter values and press 'set'"}</h2>
                 <div className="buttons">
-                    <button className="btn inc-btn" onClick={resultInc}>Inc</button>
-                    <button className="btn reset-btn" onClick={resultReset}>Reset</button>
+                    <button className={`btn inc-btn ${count === max ? 'disabledStyleInc' : ''}`} onClick={resInc}>Inc
+                    </button>
+                    <button className="btn reset-btn" onClick={resReset}>Reset</button>
                 </div>
             </div>
         </div>

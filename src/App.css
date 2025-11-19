@@ -32,14 +32,6 @@ label {
     color: #555;
 }
 
-.input {
-    margin-left: 8px;
-    padding: 5px 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 80px;
-}
-
 .buttons {
     display: flex;
     gap: 10px;
@@ -68,7 +60,7 @@ label {
 }
 
 .inc-btn {
-    background: #22c55e;
+    background: #2d651d;
     color: white;
 }
 
@@ -88,5 +80,20 @@ label {
     color: #cc2126;
 }
 .err{
-    color: red;
+    color: #050505;
+    border: 3px solid #d01a1a;
+   background-color: #f49c9c;
+}
+.input {
+    margin-left: 8px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    width: 80px;
+}
+.disabledStyleSet{
+    background-color: #6973e6;
+}
+
+.disabledStyleInc{
+    background-color: #527e45;
 }
