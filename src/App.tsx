@@ -3,6 +3,7 @@ import './App.css'
 import {ChangeEvent, useState} from "react";
 import {Button} from "./components/Button/Button.tsx";
 import {ResultCounter} from "./components/ResultCounter/ResultCounter.tsx";
+import {SettingsInputs} from "./components/SettingsInputs/SettingsInputs.tsx";
 
 
 export const App = () => {
@@ -39,37 +40,18 @@ export const App = () => {
         setIsSetPressed(true)
     }
 
-
     const disabled = max < 0 || start < 0 || start === max || isSetPressed
-
 
     return (
         <div className="app">
-            <div className="settings-box">
-                <label>
-                    Max value:
-                    <input type="number"
-                           className={`input ${max < 0 || start === max ? 'err' : ''} `}
-                           value={max}
-                           onChange={maxCounter}/>
-                </label>
-
-                <label>
-                    Start value:
-                    <input type="number"
-                           className={`input ${start < 0 || start === max ? 'err' : ''}`}
-                           value={start}
-                           onChange={startCounter}/>
-                </label>
-
-                <Button
-                    className={`btn set-btn ${disabled ? 'disabledStyleSet' : ''}`}
-                    onClick={setButton}
-                    disabled={disabled}
-                    text={'Set'}
-                />
-            </div>
-
+            <SettingsInputs
+                max={max}
+                start={start}
+                disabled={disabled}
+                startCounter={startCounter}
+                maxCounter={maxCounter}
+                setButton={setButton}
+            />
             <div className="counter-box">
                 <ResultCounter
                     count={count}
