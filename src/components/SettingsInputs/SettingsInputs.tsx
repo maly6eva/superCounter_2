@@ -12,10 +12,11 @@ type SettingsInputsType = {
     startCounter: (e: ChangeEvent<HTMLInputElement>) => void
     maxCounter: (e: ChangeEvent<HTMLInputElement>) => void
     setButton: () => void
+    setIsSetPressed: (isSet: boolean) => void
 }
 
 export const SettingsInputs = (props: SettingsInputsType) => {
-    const {max, start, disabled, startCounter, maxCounter, setButton} = props
+    const {max, start, disabled, startCounter, maxCounter, setButton, setIsSetPressed} = props
     return (
         <div className={s.settingsBox}>
             <InputBlock
@@ -32,7 +33,10 @@ export const SettingsInputs = (props: SettingsInputsType) => {
             />
             <Button
                 className={`${button.btn} ${button.setBtn} ${disabled ? button.setBtnDisabled : ''}`}
-                onClick={setButton}
+                onClick={() => {
+                    setButton()
+                    setIsSetPressed(true)
+                } }
                 disabled={disabled}
                 text={'Set'}
             />

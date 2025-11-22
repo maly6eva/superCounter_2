@@ -57,7 +57,6 @@ export const App = () => {
 
     const setButton = () => {
         setCount(start);
-        setIsSetPressed(true)
     }
 
     const resInc = () => {
@@ -69,42 +68,50 @@ export const App = () => {
 
     const resReset = () => {
         setCount(start)
-        setIsSetPressed(true)
     }
 
-    const disabled = max < 0 || start < 0 || start === max || isSetPressed
+    const disabled = max < 0 || start < 0 || start === max
 
     return (
         <div className="app">
-            <SettingsInputs
-                max={max}
-                start={start}
-                disabled={disabled}
-                startCounter={startCounter}
-                maxCounter={maxCounter}
-                setButton={setButton}
-            />
-            <div className="counter-box">
-                <ResultCounter
-                    count={count}
+            {isSetPressed ?
+                (<div className="counter-box">
+                    <ResultCounter
+                        count={count}
+                        max={max}
+                        start={start}
+                        isSetPressed={isSetPressed}
+                    />
+                    <div className={button.buttons}>
+                        <Button
+                            className={`${button.btn} ${button.incBtn} ${count === max ? button.disabledStyleInc : ''}`}
+                            onClick={resInc}
+                            disabled={count === max}
+                            text={'Inc'}
+                        />
+                        <Button
+                            className={`${button.btn} ${button.resetBtn}`}
+                            onClick={resReset}
+                            text={'Reset'}
+                        />
+                        <Button
+                            className={`${button.btn} ${button.setBtn} ${disabled ? button.setBtnDisabled : ''}`}
+                            onClick={() => {
+                                setIsSetPressed(false)
+                            }}
+                            text={'Set'}
+                        />
+                    </div>
+                </div>)
+            : (   <SettingsInputs
                     max={max}
                     start={start}
-                    isSetPressed={isSetPressed}
-                />
-                <div className={button.buttons}>
-                    <Button
-                        className={`${button.btn} ${button.incBtn} ${count === max ? button.disabledStyleInc : ''}`}
-                        onClick={resInc}
-                        disabled={count === max}
-                        text={'Inc'}
-                    />
-                    <Button
-                        className={`${button.btn} ${button.resetBtn}`}
-                        onClick={resReset}
-                        text={'Reset'}
-                    />
-                </div>
-            </div>
+                    disabled={disabled}
+                    startCounter={startCounter}
+                    maxCounter={maxCounter}
+                    setButton={setButton}
+                    setIsSetPressed={setIsSetPressed}
+                />)}
         </div>
     )
 }
