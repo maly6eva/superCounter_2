@@ -1,3 +1,5 @@
+import s from './ResultCounter.module.css';
+
 type ResultCountertype = {
     count: number
     max: number
@@ -21,7 +23,7 @@ export const ResultCounter = ({count, max, start, isSetPressed}: ResultCounterty
     const isRed = error || (isSetPressed && count === max)
 
     return (
-        <h2 className={`count-value ${isRed ? 'count-red' : ''}`}>
+        <h2 className={`${s.countValue} ${isRed ? s.countRed : ''}`}>
             {message}
         </h2>
     );

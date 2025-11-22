@@ -1,9 +1,10 @@
 import './App.css'
 
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import {Button} from "./components/Button/Button.tsx";
 import {ResultCounter} from "./components/ResultCounter/ResultCounter.tsx";
 import {SettingsInputs} from "./components/SettingsInputs/SettingsInputs.tsx";
+import button from "./components/Button/Button.module.css"
 
 
 export const App = () => {
@@ -11,6 +12,38 @@ export const App = () => {
     const [max, setMax] = useState(0);
     const [start, setStart] = useState(0);
     const [isSetPressed, setIsSetPressed] = useState(false)
+
+
+    useEffect(() => {
+        const counterMax = localStorage.getItem('counter-max')
+        const counterStart = localStorage.getItem('counter-start')
+        const counterCount = localStorage.getItem('counter-count')
+        const counterIsSet = localStorage.getItem('counter-isSet')
+
+        if (counterMax) {
+            const newMax = JSON.parse(counterMax)
+            setMax(newMax)
+        }
+        if (counterStart) {
+            const newStart = JSON.parse(counterStart)
+            setStart(newStart)
+        }
+        if (counterCount) {
+            const newCount = JSON.parse(counterCount)
+            setCount(newCount)
+        }
+        if (counterIsSet) {
+            const isSet = JSON.parse(counterIsSet)
+            setIsSetPressed(isSet)
+        }
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('counter-max', JSON.stringify(max))
+        localStorage.setItem('counter-start', JSON.stringify(start))
+        localStorage.setItem('counter-count', JSON.stringify(count))
+        localStorage.setItem('counter-isSet', JSON.stringify(isSetPressed))
+    }, [max, start, count, isSetPressed])
 
 
     const startCounter = (e: ChangeEvent<HTMLInputElement>) => {
@@ -59,10 +92,18 @@ export const App = () => {
                     start={start}
                     isSetPressed={isSetPressed}
                 />
-                <div className="buttons">
-                    <Button className={`btn inc-btn ${count === max ? 'disabledStyleInc' : ''}`} onClick={resInc}
-                            text={'Inc'}/>
-                    <Button className="btn reset-btn" onClick={resReset} text={'Reset'}/>
+                <div className={button.buttons}>
+                    <Button
+                        className={`${button.btn} ${button.incBtn} ${count === max ? button.disabledStyleInc : ''}`}
+                        onClick={resInc}
+                        disabled={count === max}
+                        text={'Inc'}
+                    />
+                    <Button
+                        className={`${button.btn} ${button.resetBtn}`}
+                        onClick={resReset}
+                        text={'Reset'}
+                    />
                 </div>
             </div>
         </div>
