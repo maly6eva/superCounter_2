@@ -1,5 +1,4 @@
 import './App.css'
-
 import {ChangeEvent, useEffect, useState} from "react";
 import {Button} from "./components/Button/Button.tsx";
 import {ResultCounter} from "./components/ResultCounter/ResultCounter.tsx";

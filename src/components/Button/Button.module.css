@@ -56,7 +56,6 @@
     transform: scale(1.07);
 }
 
-
 .setBtnDisabled {
     opacity: 0.45;
     cursor: not-allowed;
@@ -64,7 +63,6 @@
     transform: none !important;
     background: linear-gradient(135deg, #2b45dc, #1325e3) !important;
 }
-
 
 .disabledStyleInc {
     background-color: #527e45 !important;
