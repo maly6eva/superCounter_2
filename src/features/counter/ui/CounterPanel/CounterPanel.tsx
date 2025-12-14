@@ -1,7 +1,6 @@
 import {incrementAC, resetAC, setIsSetPressedAC} from "@/entities/counter/model/counter-reducer.ts";
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch.ts";
 import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
-
 import {ResultCounter} from "@/entities/counter/ui/ResultCounter/ResultCounter.tsx";
 import {Button} from "@/shared/ui/Button/Button.tsx";
 import button from "./CounterPanel.module.css"

@@ -9,9 +9,6 @@ import {useAppSelector} from "@/shared/lib/hooks/useAppSelector.ts";
 import {selectCounter} from "@/entities/counter/model/counter-selectors.ts";
 
 
-
-
-
 export const SettingsInputs = () => {
     const dispatch = useAppDispatch()
     const counter = useAppSelector(selectCounter)

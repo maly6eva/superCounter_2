@@ -8,7 +8,6 @@ import s from "./CounterPage.module.css"
 export const CounterPage = () => {
     const counter = useAppSelector(selectCounter)
 
-
     // useEffect(() => {
     //     const counterMax = localStorage.getItem('counter-max')
     //     const counterStart = localStorage.getItem('counter-start')
