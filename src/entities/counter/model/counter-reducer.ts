@@ -1,5 +1,5 @@
 import {createAction, createReducer} from "@reduxjs/toolkit";
-import {CounterTypes} from "../app/App.tsx";
+import {CounterTypes} from "@/app/App.tsx";
 
 
 const initialState: CounterTypes = {

@@ -11,3 +11,9 @@
 .countRed {
     color: #cc2126;
 }
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}

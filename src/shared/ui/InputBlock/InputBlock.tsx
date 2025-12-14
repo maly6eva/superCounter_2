@@ -1,5 +1,5 @@
 import {ChangeEvent} from "react";
-import s from './SettingsInputs.module.css';
+import s from './InputBlock.module.css'
 
 type InputBlockType = {
     label: string;

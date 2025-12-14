@@ -1,0 +1,22 @@
+.label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #555;
+}
+
+.input {
+    margin-left: 8px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    width: 90px;
+    font-size: 1.4rem;
+}
+
+.err {
+    border: 2px solid #d01a1a;
+    background-color: #f49c9c;
+}

@@ -1,0 +1,77 @@
+.buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.btn {
+    padding: 30px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.4rem;
+    transition: 0.25s ease;
+    background: rgba(255, 255, 255, 0.08);
+    color: #e5e5e5;
+    backdrop-filter: blur(10px);
+}
+
+.btn:hover {
+    transform: scale(1.07);
+    background: rgba(255, 255, 255, 0.20);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.25);
+}
+
+.setBtn {
+    background: linear-gradient(135deg, rgba(16, 67, 179), #3744cc);
+    /*width: 100%;*/
+    /*margin-top: 20px;*/
+    color: white;
+}
+
+.setBtn:hover:not(.setBtnDisabled) {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.45);
+}
+
+.incBtn {
+    background: #2d651d;
+    color: white;
+}
+
+.incBtn:hover {
+    background: #3e8b2a;
+    box-shadow: 0 4px 15px rgba(62, 139, 42, 0.45);
+    transform: scale(1.07);
+}
+.resetBtn {
+    background: #ef4444;
+    color: white;
+}
+
+.resetBtn:hover {
+    background: #f87171;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.45);
+    transform: scale(1.07);
+}
+
+.setBtnDisabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
+    background: linear-gradient(135deg, #2b45dc, #1325e3) !important;
+}
+
+.disabledStyleInc {
+    background-color: #527e45 !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none !important;
+}
+
+.setBtnDisabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}

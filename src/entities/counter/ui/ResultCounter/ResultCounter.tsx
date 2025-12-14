@@ -1,4 +1,4 @@
-import s from './ResultCounter.module.css';
+import s from '@/ResultCounter.module.css';
 
 type ResultCountertype = {
     count: number
