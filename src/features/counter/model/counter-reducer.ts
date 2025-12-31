@@ -1,7 +1,6 @@
 import {createAction, createReducer} from "@reduxjs/toolkit";
 import {CounterTypes} from "@/app/App.tsx";
 
-
 const initialState: CounterTypes = {
     count: 0,
     max: 0,

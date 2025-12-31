@@ -1,3 +1,5 @@
+import {memo} from "react";
+
 type ButtonProps = {
     text: string
     onClick?: () => void
@@ -5,7 +7,7 @@ type ButtonProps = {
     disabled?: boolean
 }
 
-export const Button = (props:ButtonProps) => {
+export const ButtonRaw = (props:ButtonProps) => {
     const {
         text,
         onClick,
@@ -18,3 +20,5 @@ export const Button = (props:ButtonProps) => {
         </button>
     );
 };
+
+export const Button = memo(ButtonRaw)

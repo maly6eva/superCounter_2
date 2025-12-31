@@ -1,5 +1,5 @@
 import s from './App.module.css'
-import {CounterPage} from "@/pages/counter/CounterPage.tsx";
+import {CounterPage} from "@/features/counter/ui/CounterPage/CounterPage.tsx";
 
 export type CounterTypes = {
     count: number
